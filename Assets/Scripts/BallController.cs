@@ -12,8 +12,16 @@ public class BallController : MonoBehaviour
     public bool isGoal = false;
     GameObject GoalPosObject;
     public BallSide ballSide;
-
     GameObject goalPoint;
+
+    public SpriteRenderer MainColorSprite;
+    public SpriteRenderer SecondaryColorSprite;
+    public TrailRenderer TrailRenderer;
+
+    public Color32 MainColor;
+    public Color32 SecondaryColor;
+    public Color32 TrailColor;
+
 
     private void Start()
     {
@@ -90,12 +98,21 @@ public class BallController : MonoBehaviour
                 transform.position = new Vector2(1f, 0);
                 break;
         }
-        rb.simulated = true;
-        Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        rb.velocity = randomDirection * speed;
 
+        if(!GameController.Instance.GameOver)
+        {
+            rb.simulated = true;
+            Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+            rb.velocity = randomDirection * speed;
+        }
     }
 
-   
+    public void ApplyColors()
+    {
+        MainColorSprite.color = MainColor;
+        SecondaryColorSprite.color = SecondaryColor;
+        TrailRenderer.startColor = SecondaryColor;
+        TrailRenderer.endColor = MainColor;
+    }
 
 }
