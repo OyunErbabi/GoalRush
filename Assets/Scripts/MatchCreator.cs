@@ -25,14 +25,14 @@ public class MatchCreator : MonoBehaviour
         {
             Team1 = new Team()
             {
-                Name = "GS",
+                Name = "L",
                 MainColor = new Color32(227, 74, 74, 255),
                 SecondaryColor = new Color32(226, 192, 76, 255)
             },
 
             Team2 = new Team()
             {
-                Name = "FB",
+                Name = "R",
                 MainColor = new Color32(0, 0, 255, 255),
                 SecondaryColor = new Color32(226, 192, 76, 255)
             },

@@ -12,6 +12,7 @@ public class WindowController : MonoBehaviour
     public GameObject MainWindow;
     public GameObject OptionsWindow;
     public GameObject PlayButton;
+    public GameObject ColorSelectWindow;
 
     public void OpenOptions()
     {
@@ -23,6 +24,16 @@ public class WindowController : MonoBehaviour
     {
         MainWindow.SetActive(true);
         OptionsWindow.SetActive(false);
+    }
+
+    public void OpenColorSelectWindow()
+    {
+        ColorSelectWindow.SetActive(true);
+    }
+
+    public void CloseColorSelectWindow() 
+    {
+        ColorSelectWindow.SetActive(false);
     }
 
     public void ShowPlayButton()
