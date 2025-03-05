@@ -19,7 +19,6 @@ public class StartTextAnimator : MonoBehaviour
         }
     }
 
-
     public TextMeshProUGUI StartText;
 
     public IEnumerator StartTextAnimation()

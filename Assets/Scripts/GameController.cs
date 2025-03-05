@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
     public bool GameOver = false;
+    public bool isGameStarted = false;
 
     public GameObject Area;
 
@@ -24,9 +25,7 @@ public class GameController : MonoBehaviour
 
     public GameObject LeftBall;
     public GameObject RightBall;
-
     public GameObject BallPrefab;
-
 
     private void Awake()
     {
@@ -96,6 +95,7 @@ public class GameController : MonoBehaviour
     
     public void StartGame()
     {
+        isGameStarted = true;
         GameOver = false;
         MatchData matchData = MatchCreator.Instance.MatchData;
 
@@ -116,6 +116,7 @@ public class GameController : MonoBehaviour
     
     IEnumerator GameTime(int speed)
     {   
+        OptionsButtonController.Instance.HideOptionsButton();
         yield return StartCoroutine(StartTextAnimator.Instance.StartTextAnimation());
 
         float _speed = 1f / speed;
@@ -146,6 +147,8 @@ public class GameController : MonoBehaviour
         RightBall.GetComponent<Rigidbody2D>().simulated = false;
 
         AreaController.Instance.rotate = false;
+        isGameStarted = false;
+        OptionsButtonController.Instance.ShowOptionsButton();
     }
 
     public void ChangeBallSimulation(bool state)
@@ -184,7 +187,6 @@ public class GameController : MonoBehaviour
         Destroy(LeftBall);
         Destroy(RightBall);
     }
-
 
     public void PlayButton()
     {
