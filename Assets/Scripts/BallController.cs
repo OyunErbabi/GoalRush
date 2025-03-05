@@ -13,7 +13,6 @@ public class BallController : MonoBehaviour
     GameObject GoalPosObject;
     public BallSide ballSide;
 
-    float angleRange = 10f;
     GameObject goalPoint;
 
     private void Start()

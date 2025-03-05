@@ -122,10 +122,10 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(_speed);
             GameTimer--;
             TimerText.text = GameTimer.ToString();
-            if (GameTimer <= 45)
-            {
-                AreaController.Instance.reverse = true;
-            }
+            //if (GameTimer <= 45)
+            //{
+            //    AreaController.Instance.reverse = true;
+            //}
         }        
      
         StopGame();
