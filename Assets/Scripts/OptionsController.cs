@@ -21,8 +21,21 @@ public class OptionsController : MonoBehaviour
     public GameObject RightMainColor;
     public GameObject RightSecondaryColor;
 
+    public GameObject PreviewLeftTeamMainColor;
+    public GameObject PreviewLeftTeamSecondaryColor;
+    public GameObject PreviewRightTeamMainColor;
+    public GameObject PreviewRightTeamSecondaryColor;
+
+    public GameObject PreviewUpperLeftTeamMainColor;
+    public GameObject PreviewUpperLeftTeamSecondaryColor;
+    public GameObject PreviewUpperRightTeamMainColor;
+    public GameObject PreviewUpperRightTeamSecondaryColor;
+
+    public bool LeftTeamIconAdded;
+    public bool RightTeamIconAdded;
 
     OptionsColorType ActiveColorType;
+    public Color32 SelectedColor;
 
     public void OnLeftTeamNameEntered()
     {
@@ -72,24 +85,45 @@ public class OptionsController : MonoBehaviour
                 ActiveColorType = OptionsColorType.RightSecondaryColor;
                 break;
         }
+    }
 
-
-        //DEBUG
-
+    public void AppySelectedColor()
+    {
         switch (ActiveColorType)
         {
             case OptionsColorType.LeftMainColor:
-                LeftMainColor.GetComponent<Image>().color = Color.gray;
-                break;
-            case OptionsColorType.RightMainColor:
-                RightMainColor.GetComponent<Image>().color = Color.gray;
-                break;
-            case OptionsColorType.RightSecondaryColor:
-                RightSecondaryColor.GetComponent<Image>().color = Color.gray;
+                LeftMainColor.GetComponent<Image>().color = SelectedColor;
+                PreviewLeftTeamMainColor.GetComponent<Image>().color = SelectedColor;
+                if (!LeftTeamIconAdded)
+                {
+                    PreviewUpperLeftTeamMainColor.GetComponent<Image>().color = SelectedColor;
+                }
                 break;
             case OptionsColorType.LeftSecondaryColor:
-                LeftSecondaryColor.GetComponent<Image>().color = Color.gray;
+                LeftSecondaryColor.GetComponent<Image>().color = SelectedColor;
+                PreviewLeftTeamSecondaryColor.GetComponent<Image>().color = SelectedColor;
+                if (!LeftTeamIconAdded)
+                {
+                    PreviewUpperLeftTeamSecondaryColor.GetComponent<Image>().color = SelectedColor;
+                }
                 break;
+            case OptionsColorType.RightMainColor:
+                RightMainColor.GetComponent<Image>().color = SelectedColor;
+                PreviewRightTeamMainColor.GetComponent<Image>().color = SelectedColor;
+                if (!RightTeamIconAdded)
+                {
+                    PreviewUpperRightTeamMainColor.GetComponent<Image>().color = SelectedColor;
+                }
+                break;
+            case OptionsColorType.RightSecondaryColor:
+                RightSecondaryColor.GetComponent<Image>().color = SelectedColor;
+                PreviewRightTeamSecondaryColor.GetComponent<Image>().color = SelectedColor;
+                if (!RightTeamIconAdded)
+                {
+                    PreviewUpperRightTeamSecondaryColor.GetComponent<Image>().color = SelectedColor;
+                }
+                break;
+            
         }
     }
 

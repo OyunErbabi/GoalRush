@@ -9,7 +9,7 @@ public class ColorListCreator : MonoBehaviour
     public GameObject Content;
     private void Start()
     {
-        Debug.Log(ColorList.DefinedColors.Length);
+        //Debug.Log(ColorList.DefinedColors.Length);
 
         foreach (Color32 color in ColorList.DefinedColors)
         {
