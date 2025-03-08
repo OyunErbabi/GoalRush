@@ -44,19 +44,19 @@ public class MatchCreator : MonoBehaviour
         OptionsController.Instance.RightTeamName.text = MatchData.Team2.Name;
 
         OptionsController.Instance.SelectedColor = MatchData.Team1.MainColor;
-        OptionsController.Instance.ChangeColor("LM");
+        OptionsController.Instance.ChangeColor("LM",false);
         OptionsController.Instance.AppySelectedColor();
 
         OptionsController.Instance.SelectedColor = MatchData.Team1.SecondaryColor;
-        OptionsController.Instance.ChangeColor("LS");
+        OptionsController.Instance.ChangeColor("LS",false);
         OptionsController.Instance.AppySelectedColor();
 
         OptionsController.Instance.SelectedColor = MatchData.Team2.MainColor;
-        OptionsController.Instance.ChangeColor("RM");
+        OptionsController.Instance.ChangeColor("RM", false);
         OptionsController.Instance.AppySelectedColor();
 
         OptionsController.Instance.SelectedColor = MatchData.Team2.SecondaryColor;
-        OptionsController.Instance.ChangeColor("RS");
+        OptionsController.Instance.ChangeColor("RS", false);
         OptionsController.Instance.AppySelectedColor();
     }
 

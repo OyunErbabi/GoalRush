@@ -66,9 +66,9 @@ public class OptionsController : MonoBehaviour
         SpeedText.text = MatchCreator.Instance.MatchData.speed.ToString() + "X";
     }
     
-    public void ChangeColor(string colorType)
+    public void ChangeColor(string colorType,bool OpenWindow=true)
     {
-        //Debug.Log("Color " + colorType + " selected");
+        Debug.Log("Color " + colorType + " selected");
 
         switch (colorType)
         {
@@ -85,6 +85,34 @@ public class OptionsController : MonoBehaviour
                 ActiveColorType = OptionsColorType.RightSecondaryColor;
                 break;
         }
+
+        if (OpenWindow)
+        {
+            
+        }   
+    }
+
+    public void ChangeColor(string colorType)
+    {
+        Debug.Log("Color " + colorType + " selected");
+
+        switch (colorType)
+        {
+            case "LM":
+                ActiveColorType = OptionsColorType.LeftMainColor;
+                break;
+            case "LS":
+                ActiveColorType = OptionsColorType.LeftSecondaryColor;
+                break;
+            case "RM":
+                ActiveColorType = OptionsColorType.RightMainColor;
+                break;
+            case "RS":
+                ActiveColorType = OptionsColorType.RightSecondaryColor;
+                break;
+        }
+
+        WindowController.Instance.OpenColorSelectWindow();
     }
 
     public void AppySelectedColor()
