@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
+using UnityEngine.UI;
 
 
 public class GameController : MonoBehaviour
@@ -26,6 +26,19 @@ public class GameController : MonoBehaviour
     public GameObject LeftBall;
     public GameObject RightBall;
     public GameObject BallPrefab;
+
+    public GameObject LeftTeamLogo;
+    public GameObject RightTeamLogo;
+
+    public GameObject LeftTeamUpperIcon;
+    public GameObject RightTeamUpperIcon;
+
+    public GameObject LeftTeamUpperMainColor;
+    public GameObject LeftTeamUpperSecondaryColor;
+    public GameObject RightTeamUpperMainColor;
+    public GameObject RightTeamUpperSecondaryColor;
+
+    bool forceStop = false;
 
     private void Awake()
     {
@@ -101,6 +114,7 @@ public class GameController : MonoBehaviour
 
         DestroyBalls();
         CreateBalls();
+        GetTeamIcons();
 
         Area.transform.rotation = Quaternion.Euler(0, 0, 90);
         GameTimer = 90;
@@ -128,23 +142,47 @@ public class GameController : MonoBehaviour
         yield return null;
         while (GameTimer > 0)
         {
+            if (forceStop)
+            {
+                break;
+            }
+
             yield return new WaitForSeconds(_speed);
-            GameTimer--;
+            if (GameTimer > 0)
+            {
+                GameTimer--;
+            }
             TimerText.text = GameTimer.ToString();
             //if (GameTimer <= 45)
             //{
             //    AreaController.Instance.reverse = true;
             //}
-        }        
-     
-        StopGame();
+
+        }
+
+        
+
+        if (!forceStop)
+        {
+            StopGame();
+        }
+
+        forceStop = false;
     }
 
     public void StopGame()
     {
         GameOver = true;
-        LeftBall.GetComponent<Rigidbody2D>().simulated = false;
-        RightBall.GetComponent<Rigidbody2D>().simulated = false;
+
+        if(LeftBall == null)
+        {
+            LeftBall.GetComponent<Rigidbody2D>().simulated = false;
+        }
+
+        if(RightBall == null)
+        {
+            RightBall.GetComponent<Rigidbody2D>().simulated = false;
+        }
 
         AreaController.Instance.rotate = false;
         isGameStarted = false;
@@ -182,6 +220,38 @@ public class GameController : MonoBehaviour
         RightBall.GetComponent<BallController>().ApplyColors();
     }
 
+    public void GetTeamIcons()
+    {
+        if(OptionsController.Instance.LeftTeamIconAdded)
+        {
+            LeftTeamLogo.SetActive(true);
+            LeftTeamUpperIcon.SetActive(false);
+            LeftTeamLogo.GetComponent<SpriteRenderer>().sprite = OptionsController.Instance.LeftTeamIcon;        
+        }
+        else
+        {
+            LeftTeamLogo.SetActive(false);
+            LeftTeamUpperIcon.SetActive(true);
+            LeftTeamUpperMainColor.GetComponent<Image>().color = MatchCreator.Instance.MatchData.Team1.MainColor;
+            LeftTeamUpperSecondaryColor.GetComponent<Image>().color = MatchCreator.Instance.MatchData.Team1.SecondaryColor;
+        }
+
+        if (OptionsController.Instance.RightTeamIconAdded)
+        {
+            RightTeamLogo.SetActive(true);
+            RightTeamUpperIcon.SetActive(false);
+            RightTeamLogo.GetComponent<SpriteRenderer>().sprite = OptionsController.Instance.RightTeamIcon;
+        }
+        else
+        {
+            RightTeamLogo.SetActive(false);
+            RightTeamUpperIcon.SetActive(true);
+            RightTeamUpperMainColor.GetComponent<Image>().color = MatchCreator.Instance.MatchData.Team2.MainColor;
+            RightTeamUpperSecondaryColor.GetComponent<Image>().color = MatchCreator.Instance.MatchData.Team2.SecondaryColor;
+
+        }
+    }
+
     public void DestroyBalls()
     {
         Destroy(LeftBall);
@@ -197,6 +267,22 @@ public class GameController : MonoBehaviour
     {
         yield return StartCoroutine(WindowController.Instance.HidePlayButtonCor());
         StartGame();
+    }
+
+    public void ResetMatchScreen()
+    {
+        forceStop = true;
+        StopGame();
+        GameTimer = 90;
+        WindowController.Instance.ShowPlayButton();
+        DestroyBalls();
+
+        isGameStarted = true;
+        GameOver = false;
+        MatchData matchData = MatchCreator.Instance.MatchData;
+        AreaController.Instance.rotate = false;
+        Area.transform.rotation = Quaternion.Euler(0, 0, 90);
+
     }
 
 }

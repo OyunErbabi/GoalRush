@@ -34,6 +34,9 @@ public class OptionsController : MonoBehaviour
     public bool LeftTeamIconAdded;
     public bool RightTeamIconAdded;
 
+    public Sprite LeftTeamIcon;
+    public Sprite RightTeamIcon;
+
     OptionsColorType ActiveColorType;
     public Color32 SelectedColor;
 
@@ -122,6 +125,7 @@ public class OptionsController : MonoBehaviour
             case OptionsColorType.LeftMainColor:
                 LeftMainColor.GetComponent<Image>().color = SelectedColor;
                 PreviewLeftTeamMainColor.GetComponent<Image>().color = SelectedColor;
+                MatchCreator.Instance.MatchData.Team1.MainColor = SelectedColor;
                 if (!LeftTeamIconAdded)
                 {
                     PreviewUpperLeftTeamMainColor.GetComponent<Image>().color = SelectedColor;
@@ -129,6 +133,7 @@ public class OptionsController : MonoBehaviour
                 break;
             case OptionsColorType.LeftSecondaryColor:
                 LeftSecondaryColor.GetComponent<Image>().color = SelectedColor;
+                MatchCreator.Instance.MatchData.Team1.SecondaryColor = SelectedColor;
                 PreviewLeftTeamSecondaryColor.GetComponent<Image>().color = SelectedColor;
                 if (!LeftTeamIconAdded)
                 {
@@ -138,6 +143,7 @@ public class OptionsController : MonoBehaviour
             case OptionsColorType.RightMainColor:
                 RightMainColor.GetComponent<Image>().color = SelectedColor;
                 PreviewRightTeamMainColor.GetComponent<Image>().color = SelectedColor;
+                MatchCreator.Instance.MatchData.Team2.MainColor = SelectedColor;
                 if (!RightTeamIconAdded)
                 {
                     PreviewUpperRightTeamMainColor.GetComponent<Image>().color = SelectedColor;
@@ -146,6 +152,7 @@ public class OptionsController : MonoBehaviour
             case OptionsColorType.RightSecondaryColor:
                 RightSecondaryColor.GetComponent<Image>().color = SelectedColor;
                 PreviewRightTeamSecondaryColor.GetComponent<Image>().color = SelectedColor;
+                MatchCreator.Instance.MatchData.Team2.SecondaryColor = SelectedColor;
                 if (!RightTeamIconAdded)
                 {
                     PreviewUpperRightTeamSecondaryColor.GetComponent<Image>().color = SelectedColor;

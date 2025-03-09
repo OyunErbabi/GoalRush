@@ -26,6 +26,7 @@ public class WindowController : MonoBehaviour
         OptionsWindow.SetActive(false);
 
         //Recreate Match Screen
+        GameController.Instance.ResetMatchScreen();
     }
 
     public void OpenColorSelectWindow()
