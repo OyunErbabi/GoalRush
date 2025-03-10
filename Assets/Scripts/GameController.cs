@@ -113,18 +113,15 @@ public class GameController : MonoBehaviour
         MatchData matchData = MatchCreator.Instance.MatchData;
 
         DestroyBalls();
-        CreateBalls();
-        GetTeamIcons();
+        CreateBalls();        
 
         Area.transform.rotation = Quaternion.Euler(0, 0, 90);
         GameTimer = 90;
-        TimerText.text = GameTimer.ToString();
+        
         ScoreLeft = 0;
         ScoreRight = 0;
-        LeftScoreText.text = ScoreLeft.ToString();
-        RightScoreText.text = ScoreRight.ToString();
-        LeftTeamNameText.text = matchData.Team1.Name;
-        RightTeamNameText.text = matchData.Team2.Name;
+        SetTeamNamesOnMainScreen();
+        GetTeamIcons();
         StartCoroutine(GameTime(matchData.speed));
     }   
     
@@ -134,7 +131,7 @@ public class GameController : MonoBehaviour
         yield return StartCoroutine(StartTextAnimator.Instance.StartTextAnimation());
 
         float _speed = 1f / speed;
-        Debug.Log("Speed : " + _speed);
+        //Debug.Log("Speed : " + _speed);
 
         ChangeBallSimulation(true);
         AreaController.Instance.rotate = true;
@@ -174,12 +171,12 @@ public class GameController : MonoBehaviour
     {
         GameOver = true;
 
-        if(LeftBall == null)
+        if(LeftBall != null)
         {
             LeftBall.GetComponent<Rigidbody2D>().simulated = false;
         }
 
-        if(RightBall == null)
+        if(RightBall != null)
         {
             RightBall.GetComponent<Rigidbody2D>().simulated = false;
         }
@@ -283,6 +280,21 @@ public class GameController : MonoBehaviour
         AreaController.Instance.rotate = false;
         Area.transform.rotation = Quaternion.Euler(0, 0, 90);
 
+        WindowController.Instance.ShowPlayButton();
+
+    }
+
+    public void SetTeamNamesOnMainScreen()
+    {
+        MatchData matchData = MatchCreator.Instance.MatchData;
+
+        TimerText.text = GameTimer.ToString();
+        LeftScoreText.text = ScoreLeft.ToString();
+        RightScoreText.text = ScoreRight.ToString();
+        LeftTeamNameText.text = matchData.Team1.Name;
+        RightTeamNameText.text = matchData.Team2.Name;
+
+        GetTeamIcons();
     }
 
 }

@@ -13,11 +13,14 @@ public class WindowController : MonoBehaviour
     public GameObject OptionsWindow;
     public GameObject PlayButton;
     public GameObject ColorSelectWindow;
+    public GameObject OptionsButton;
 
     public void OpenOptions()
     {
         MainWindow.SetActive(false);
         OptionsWindow.SetActive(true);
+
+        GameController.Instance.StopGame();
     }
 
     public void CloseOptions()
@@ -27,6 +30,7 @@ public class WindowController : MonoBehaviour
 
         //Recreate Match Screen
         GameController.Instance.ResetMatchScreen();
+        GameController.Instance.SetTeamNamesOnMainScreen();
     }
 
     public void OpenColorSelectWindow()
@@ -46,6 +50,8 @@ public class WindowController : MonoBehaviour
 
     IEnumerator ShowPlayButtonCor()
     {
+        PlayButton.transform.localScale = Vector3.zero;
+        PlayButton.SetActive(true);
         PlayButton.transform.DOScale(1, 0.25f);
         yield return new WaitForSeconds(0.25f);
     }

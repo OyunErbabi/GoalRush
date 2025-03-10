@@ -41,23 +41,15 @@ public class BallController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            Vector2 reflection = Vector2.Reflect(rb.velocity, collision.contacts[0].normal);
-
-         
-            float randomAngle = Random.Range(-35f, 35f);
-
-         
-            float angleRad = randomAngle * Mathf.Deg2Rad;
-
-         
+            Vector2 reflection = Vector2.Reflect(rb.velocity, collision.contacts[0].normal);         
+            float randomAngle = Random.Range(-35f, 35f);         
+            float angleRad = randomAngle * Mathf.Deg2Rad;         
             float cos = Mathf.Cos(angleRad);
             float sin = Mathf.Sin(angleRad);
             Vector2 newDirection = new Vector2(
                 reflection.x * cos - reflection.y * sin,
                 reflection.x * sin + reflection.y * cos
-            );
-
-         
+            );         
             rb.velocity = newDirection.normalized * speed;
         }
         else if (collision.gameObject.CompareTag("Goal"))
@@ -111,8 +103,9 @@ public class BallController : MonoBehaviour
     {
         MainColorSprite.color = MainColor;
         SecondaryColorSprite.color = SecondaryColor;
-        TrailRenderer.startColor = SecondaryColor;
-        TrailRenderer.endColor = MainColor;
+
+        //TrailRenderer.startColor = SecondaryColor;
+        //TrailRenderer.endColor = MainColor;
     }
 
 }

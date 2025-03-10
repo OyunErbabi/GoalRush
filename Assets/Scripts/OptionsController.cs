@@ -71,7 +71,7 @@ public class OptionsController : MonoBehaviour
     
     public void ChangeColor(string colorType,bool OpenWindow=true)
     {
-        Debug.Log("Color " + colorType + " selected");
+        //Debug.Log("Color " + colorType + " selected");
 
         switch (colorType)
         {
@@ -97,7 +97,7 @@ public class OptionsController : MonoBehaviour
 
     public void ChangeColor(string colorType)
     {
-        Debug.Log("Color " + colorType + " selected");
+        //Debug.Log("Color " + colorType + " selected");
 
         switch (colorType)
         {

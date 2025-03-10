@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class StartTextAnimator : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class StartTextAnimator : MonoBehaviour
 
     public IEnumerator StartTextAnimation()
     {
+        WindowController.Instance.OptionsButton.GetComponent<Button>().interactable = false;
+
         StartText.gameObject.SetActive(true);
         StartText.transform.localScale = Vector3.zero;
 
@@ -42,6 +45,7 @@ public class StartTextAnimator : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         StartText.text = "";
         StartText.gameObject.SetActive(false);
-
+        yield return new WaitForSeconds(0.5f);
+        WindowController.Instance.OptionsButton.GetComponent<Button>().interactable = true;
     }
 }
