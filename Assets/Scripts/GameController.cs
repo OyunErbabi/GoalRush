@@ -56,6 +56,11 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        QualitySettings.vSyncCount = 0;
+        var refreshRate = Screen.currentResolution.refreshRateRatio.value;
+        int refreshRateInt = (int)refreshRate;        
+        Application.targetFrameRate = Mathf.RoundToInt(refreshRateInt);
+
         GoalPoints = new List<GameObject>();
 
         ChangeBallSimulation(false);
@@ -65,11 +70,11 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            StartGame();
-            //StartCoroutine(StartTextAnimator.Instance.StartTextAnimation());
-        }
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    StartGame();
+        //    //StartCoroutine(StartTextAnimator.Instance.StartTextAnimation());
+        //}
     }
 
     public void AddGoalPoint(GameObject goalPoint)
@@ -290,7 +295,6 @@ public class GameController : MonoBehaviour
         RightScoreText.text = "0";
         TimerText.text = "90";
 
-        Debug.Log("reset match screen");
         WindowController.Instance.ShowPlayButton();
 
     }

@@ -12,6 +12,9 @@ public class VibrationController : MonoBehaviour
     private void Start()
     {
         hapticsSupported = DeviceCapabilities.isVersionSupported;
+
+        Debug.Log("Haptics Supported: " + hapticsSupported);
+
         ToggleVibration(true);
     }
 

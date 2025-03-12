@@ -25,6 +25,8 @@ public class AdManager : MonoBehaviour
     string BannerAdUnitId;
 
     bool TestAds;
+
+    public GameObject DebugConsole;
     async Task Awake()
     {
         if (Instance == null)
@@ -66,6 +68,12 @@ public class AdManager : MonoBehaviour
                 Debug.Log("No Settings Loaded! Cached!");
                 break;
             case ConfigOrigin.Remote:
+
+                if (RemoteConfigService.Instance.appConfig.GetBool("DebugConsole"))
+                {
+                    DebugConsole.SetActive(true);
+                }
+
                 StartAds();
                 break;
         }
