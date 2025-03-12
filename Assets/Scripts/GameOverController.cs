@@ -39,6 +39,10 @@ public class GameOverController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         GenerateGameOverPanel();
         GameOverPanel.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+
+        AdManager.Instance.ShowInterstitialAd();
     }
 
     public void GenerateGameOverPanel()
