@@ -20,8 +20,8 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI LeftTeamNameText;
     public TextMeshProUGUI RightTeamNameText;
 
-    int ScoreLeft = 0;
-    int ScoreRight = 0;
+    public int ScoreLeft = 0;
+    public int ScoreRight = 0;
 
     public GameObject LeftBall;
     public GameObject RightBall;
@@ -122,6 +122,7 @@ public class GameController : MonoBehaviour
         ScoreRight = 0;
         SetTeamNamesOnMainScreen();
         GetTeamIcons();
+        forceStop = false;
         StartCoroutine(GameTime(matchData.speed));
     }   
     
@@ -162,6 +163,7 @@ public class GameController : MonoBehaviour
         if (!forceStop)
         {
             StopGame();
+            GameOverController.Instance.GameOver();
         }
 
         forceStop = false;
@@ -279,7 +281,11 @@ public class GameController : MonoBehaviour
         MatchData matchData = MatchCreator.Instance.MatchData;
         AreaController.Instance.rotate = false;
         Area.transform.rotation = Quaternion.Euler(0, 0, 90);
+        LeftScoreText.text = "0";
+        RightScoreText.text = "0";
+        TimerText.text = "90";
 
+        Debug.Log("reset match screen");
         WindowController.Instance.ShowPlayButton();
 
     }
@@ -289,8 +295,8 @@ public class GameController : MonoBehaviour
         MatchData matchData = MatchCreator.Instance.MatchData;
 
         TimerText.text = GameTimer.ToString();
-        LeftScoreText.text = ScoreLeft.ToString();
-        RightScoreText.text = ScoreRight.ToString();
+        LeftScoreText.text = "0";
+        RightScoreText.text = "0";
         LeftTeamNameText.text = matchData.Team1.Name;
         RightTeamNameText.text = matchData.Team2.Name;
 

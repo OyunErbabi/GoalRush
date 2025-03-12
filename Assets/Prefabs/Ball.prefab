@@ -288,6 +288,8 @@ MonoBehaviour:
   TrailColor:
     serializedVersion: 2
     rgba: 0
+  HitFX: {fileID: 151244, guid: 28729bb8e94cc7143bcca2472b9087a4, type: 3}
+  GoalFx: {fileID: 129898, guid: 7f9eda2aafd261242bd3cf6db6edd2dc, type: 3}
 --- !u!58 &4513879246091444486
 CircleCollider2D:
   m_ObjectHideFlags: 0

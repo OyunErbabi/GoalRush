@@ -14,6 +14,7 @@ public class WindowController : MonoBehaviour
     public GameObject PlayButton;
     public GameObject ColorSelectWindow;
     public GameObject OptionsButton;
+    public GameObject GameOverWindow;
 
     public void OpenOptions()
     {
@@ -66,6 +67,16 @@ public class WindowController : MonoBehaviour
         PlayButton.transform.DOScale(0, 0.25f);
         yield return new WaitForSeconds(0.25f);
         PlayButton.SetActive(false);
+    }
+
+    public void ShowGameOverWindow()
+    {
+        GameOverWindow.SetActive(true);
+    }
+
+    public void CloseGameOverWindow()
+    {
+        GameOverWindow.SetActive(false);
     }
 
 }

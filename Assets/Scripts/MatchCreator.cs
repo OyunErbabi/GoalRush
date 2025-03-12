@@ -58,6 +58,8 @@ public class MatchCreator : MonoBehaviour
         OptionsController.Instance.SelectedColor = MatchData.Team2.SecondaryColor;
         OptionsController.Instance.ChangeColor("RS", false);
         OptionsController.Instance.AppySelectedColor();
+
+        GameController.Instance.SetTeamNamesOnMainScreen();
     }
 
 }

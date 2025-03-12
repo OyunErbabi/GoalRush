@@ -22,11 +22,24 @@ public class BallController : MonoBehaviour
     public Color32 SecondaryColor;
     public Color32 TrailColor;
 
+    public GameObject HitFX;
+    public GameObject GoalFx;
+
+    bool MainBall;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(1, 1).normalized * speed;
+
+        if (ballSide == BallSide.Left)
+        {
+            MainBall = true; 
+        }
+        else
+        {
+            MainBall = false;
+        }
     }
 
     private void FixedUpdate()
@@ -51,6 +64,12 @@ public class BallController : MonoBehaviour
                 reflection.x * sin + reflection.y * cos
             );         
             rb.velocity = newDirection.normalized * speed;
+
+            if (MainBall)
+            {
+                Instantiate(HitFX, collision.contacts[0].point, Quaternion.Euler(0,180,0));
+            }
+
         }
         else if (collision.gameObject.CompareTag("Goal"))
         {
@@ -63,6 +82,8 @@ public class BallController : MonoBehaviour
             isGoal = true;
 
             GameController.Instance.Goal(gameObject,ballSide);
+
+            Instantiate(GoalFx, transform.position, Quaternion.identity);
         }
     }
 
