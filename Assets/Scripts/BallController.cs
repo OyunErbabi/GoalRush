@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lofelt.NiceVibrations;
 
 public enum BallSide { Left, Right}
 
@@ -55,6 +56,7 @@ public class BallController : MonoBehaviour
         if (collision.gameObject.CompareTag("Area"))
         {
             SoundManager.Instance.PlayWallAreaHitSound();
+            VibrationController.Instance.Vibrate(HapticPatterns.PresetType.LightImpact);
         }
 
         if (collision.gameObject.CompareTag("Ball"))
@@ -77,6 +79,7 @@ public class BallController : MonoBehaviour
 
             SoundManager.Instance.PlayHitSound();
 
+            VibrationController.Instance.Vibrate(HapticPatterns.PresetType.HeavyImpact);
         }
         else if (collision.gameObject.CompareTag("Goal"))
         {
@@ -92,6 +95,8 @@ public class BallController : MonoBehaviour
 
             Instantiate(GoalFx, transform.position, Quaternion.identity);
             SoundManager.Instance.PlayGoalSound();
+
+            VibrationController.Instance.Vibrate(HapticPatterns.PresetType.Success);
         }
     }
 

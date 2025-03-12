@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
+using Lofelt.NiceVibrations;
 
 public class StartTextAnimator : MonoBehaviour
 {
@@ -34,6 +35,9 @@ public class StartTextAnimator : MonoBehaviour
             StartText.text = i.ToString();
             StartText.transform.DOScale(1, 0.5f);
             yield return new WaitForSeconds(0.5f);
+
+            VibrationController.Instance.Vibrate(HapticPatterns.PresetType.SoftImpact);
+
             StartText.transform.DOScale(0, 0.5f);
             yield return new WaitForSeconds(0.5f);
         }
@@ -45,6 +49,8 @@ public class StartTextAnimator : MonoBehaviour
         //yield return new WaitForSeconds(0.5f);
 
         SoundManager.Instance.PlayStartSound();
+
+        VibrationController.Instance.Vibrate(HapticPatterns.PresetType.Success);
 
         StartText.text = "";
         StartText.gameObject.SetActive(false);
