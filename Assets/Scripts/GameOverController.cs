@@ -30,7 +30,7 @@ public class GameOverController : MonoBehaviour
     public GameObject BallSecondColor;
 
     public void GameOver()
-    {
+    {   
         StartCoroutine(GameOverCor());
     }
 

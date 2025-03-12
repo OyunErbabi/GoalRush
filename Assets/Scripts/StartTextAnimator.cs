@@ -38,11 +38,14 @@ public class StartTextAnimator : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        StartText.text = "Go!";
-        StartText.transform.DOScale(1, 0.5f);
-        yield return new WaitForSeconds(0.5f);
-        StartText.transform.DOScale(0, 0.5f);
-        yield return new WaitForSeconds(0.5f);
+        //StartText.text = "Go!";
+        //StartText.transform.DOScale(1, 0.5f);
+        //yield return new WaitForSeconds(0.5f);        
+        //StartText.transform.DOScale(0, 0.5f);
+        //yield return new WaitForSeconds(0.5f);
+
+        SoundManager.Instance.PlayStartSound();
+
         StartText.text = "";
         StartText.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);

@@ -52,6 +52,11 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Area"))
+        {
+            SoundManager.Instance.PlayWallAreaHitSound();
+        }
+
         if (collision.gameObject.CompareTag("Ball"))
         {
             Vector2 reflection = Vector2.Reflect(rb.velocity, collision.contacts[0].normal);         
@@ -70,6 +75,8 @@ public class BallController : MonoBehaviour
                 Instantiate(HitFX, collision.contacts[0].point, Quaternion.Euler(0,180,0));
             }
 
+            SoundManager.Instance.PlayHitSound();
+
         }
         else if (collision.gameObject.CompareTag("Goal"))
         {
@@ -84,6 +91,7 @@ public class BallController : MonoBehaviour
             GameController.Instance.Goal(gameObject,ballSide);
 
             Instantiate(GoalFx, transform.position, Quaternion.identity);
+            SoundManager.Instance.PlayGoalSound();
         }
     }
 

@@ -156,6 +156,11 @@ public class GameController : MonoBehaviour
             //    AreaController.Instance.reverse = true;
             //}
 
+            if (GameTimer==3)
+            {
+                SoundManager.Instance.PlayStopSound();
+            }
+
         }
 
         
