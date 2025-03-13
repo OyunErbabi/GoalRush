@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: OyunErbabi
-  productName: Goal Rush
+  productName: Goal Rush Simulator
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -158,12 +158,13 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.OyunErbabi.GoalRush
     Standalone: com.DefaultCompany.2DProject
+    iPhone: com.OyunErbabi.GoalRush
   buildNumber:
     Standalone: 0
     VisionOS: 0
-    iPhone: 0
+    iPhone: 1
     tvOS: 0
-  overrideDefaultApplicationIdentifier: 0
+  overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 34
@@ -278,11 +279,19 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: iPhone
     m_Icons:
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
       m_Width: 180
       m_Height: 180
       m_Kind: 0
@@ -292,7 +301,8 @@ PlayerSettings:
       m_Height: 120
       m_Kind: 0
       m_SubKind: iPhone
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
       m_Width: 167
       m_Height: 167
       m_Kind: 0
@@ -307,7 +317,8 @@ PlayerSettings:
       m_Height: 76
       m_Kind: 0
       m_SubKind: iPad
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
       m_Width: 120
       m_Height: 120
       m_Kind: 3
@@ -317,7 +328,8 @@ PlayerSettings:
       m_Height: 80
       m_Kind: 3
       m_SubKind: iPhone
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
       m_Width: 80
       m_Height: 80
       m_Kind: 3
@@ -327,7 +339,8 @@ PlayerSettings:
       m_Height: 40
       m_Kind: 3
       m_SubKind: iPad
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
       m_Width: 87
       m_Height: 87
       m_Kind: 1
@@ -342,7 +355,8 @@ PlayerSettings:
       m_Height: 29
       m_Kind: 1
       m_SubKind: iPhone
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
       m_Width: 58
       m_Height: 58
       m_Kind: 1
@@ -352,7 +366,8 @@ PlayerSettings:
       m_Height: 29
       m_Kind: 1
       m_SubKind: iPad
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
       m_Width: 60
       m_Height: 60
       m_Kind: 2
@@ -362,7 +377,8 @@ PlayerSettings:
       m_Height: 40
       m_Kind: 2
       m_SubKind: iPhone
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
       m_Width: 40
       m_Height: 40
       m_Kind: 2
@@ -372,7 +388,8 @@ PlayerSettings:
       m_Height: 20
       m_Kind: 2
       m_SubKind: iPad
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0c31e675fbe1a2546b53c0dba3fa6156, type: 3}
       m_Width: 1024
       m_Height: 1024
       m_Kind: 4
@@ -814,7 +831,7 @@ PlayerSettings:
     WebGL: DOTWEEN
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
-    iPhone: DOTWEEN
+    iPhone: DOTWEEN;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
     tvOS: DOTWEEN
   additionalCompilerArguments: {}
   platformArchitecture: {}
