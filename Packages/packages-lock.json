@@ -94,12 +94,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.ads.ios-support": {
-      "version": "file:D:/com.unity.ads.ios-support-master/com.unity.ads.ios-support",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.burst": {
       "version": "1.8.8",
       "depth": 3,
