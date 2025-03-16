@@ -5,6 +5,7 @@ using GoogleMobileAds.Api;
 using Unity.Services.RemoteConfig;
 using System.Threading.Tasks;
 using Unity.Services.Core;
+using Unity.Advertisement.IosSupport;
 
 
 public class AdManager : MonoBehaviour
@@ -77,7 +78,7 @@ public class AdManager : MonoBehaviour
     void StartAds()
     {
 
-        RequestATTConsent();
+        StartCoroutine(RequestATT());
 
         TestAds = RemoteConfigService.Instance.appConfig.GetBool("TestAds");
 
@@ -297,11 +298,14 @@ public class AdManager : MonoBehaviour
         LoadConsentForum();
     }
 
-
-    void RequestATTConsent()
+    IEnumerator RequestATT()
     {
-        ConsentRequestParameters parameters = new ConsentRequestParameters();
-        ConsentInformation.Update(parameters, OnConsentInfoUpdated);
+        if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() ==
+            ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
+        {
+            yield return new WaitForSeconds(1.0f);
+            ATTrackingStatusBinding.RequestAuthorizationTracking();
+        }
     }
 
 }
