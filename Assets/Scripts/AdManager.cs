@@ -70,7 +70,8 @@ public class AdManager : MonoBehaviour
                     DebugConsole.SetActive(true);
                 }
 
-                StartAds();
+                //StartAds();
+                StartCoroutine(RequestATT());
                 break;
         }
     }
@@ -301,10 +302,25 @@ public class AdManager : MonoBehaviour
     IEnumerator RequestATT()
     {
         if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() ==
-            ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
+         ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
         {
             yield return new WaitForSeconds(1.0f);
             ATTrackingStatusBinding.RequestAuthorizationTracking();
+            
+            yield return new WaitUntil(() => ATTrackingStatusBinding.GetAuthorizationTrackingStatus() !=
+                ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED);
+
+            // Ýzin alýndýysa reklamlarý baþlat
+            if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() !=
+                ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
+            {
+                StartAds();
+            }
+        }
+        else
+        {
+            // Ýzin zaten verilmiþse hemen reklamlarý baþlat
+            StartAds();
         }
     }
 
