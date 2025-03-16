@@ -17,6 +17,7 @@ MonoBehaviour:
   enableKotlinXCoroutinesPackagingOption: 1
   optimizeInitialization: 0
   optimizeAdLoading: 0
-  userTrackingUsageDescription: 
+  userTrackingUsageDescription: This app uses your advertising ID to show you more
+    relevant ads.
   validateGradleDependencies: 0
   userLanguage: en
