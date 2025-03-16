@@ -79,7 +79,7 @@ public class AdManager : MonoBehaviour
     void StartAds()
     {
 
-        StartCoroutine(RequestATT());
+        //StartCoroutine(RequestATT());
 
         TestAds = RemoteConfigService.Instance.appConfig.GetBool("TestAds");
 
@@ -310,7 +310,7 @@ public class AdManager : MonoBehaviour
             yield return new WaitUntil(() => ATTrackingStatusBinding.GetAuthorizationTrackingStatus() !=
                 ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED);
 
-            // Ýzin alýndýysa reklamlarý baþlat
+            
             if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() !=
                 ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
             {
@@ -319,7 +319,7 @@ public class AdManager : MonoBehaviour
         }
         else
         {
-            // Ýzin zaten verilmiþse hemen reklamlarý baþlat
+           
             StartAds();
         }
     }
