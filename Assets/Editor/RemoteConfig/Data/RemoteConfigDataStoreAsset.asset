@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a73862dd-c899-40a1-9f3c-1ebc1186aa9b\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestAds\",\r\n      \"type\": \"bool\",\r\n     
-    \"value\": false\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"9ea5bd8e-a843-462d-8f42-4359a1623fb4\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"DebugConsole\",\r\n      \"type\": \"bool\",\r\n      \"value\": false\r\n   
-    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a73862dd-c899-40a1-9f3c-1ebc1186aa9b\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"TestAds\",\r\n      \"type\": \"bool\",\r\n     
-    \"value\": false\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"9ea5bd8e-a843-462d-8f42-4359a1623fb4\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"DebugConsole\",\r\n      \"type\": \"bool\",\r\n      \"value\": false\r\n   
-    }\r\n  }\r\n]"
-  _environments: "[\r\n  {\r\n    \"projectId\": \"fec7df0d-cd1d-4c44-aff4-206b220cb57e\",\r\n   
-    \"name\": \"production\",\r\n    \"id\": \"1ef9fe7d-6c65-409f-8422-4a31e1eb9133\",\r\n   
-    \"isDefault\": true,\r\n    \"createdAt\": \"2025-03-12T19:14:07Z\",\r\n    \"updatedAt\":
-    \"2025-03-12T19:14:07Z\"\r\n  }\r\n]"
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"5a7f6651-a3f4-4c05-ac02-7ab199be9daa\"\n   
+    },\n    \"rs\": {\n      \"key\": \"TestAds\",\n      \"type\": \"bool\",\n     
+    \"value\": false\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
+    \"a5ef567e-1cd9-4fdf-a072-621957a4e175\"\n    },\n    \"rs\": {\n      \"key\":
+    \"DebugConsole\",\n      \"type\": \"bool\",\n      \"value\": false\n    }\n 
+    }\n]"
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"5a7f6651-a3f4-4c05-ac02-7ab199be9daa\"\n   
+    },\n    \"rs\": {\n      \"key\": \"TestAds\",\n      \"type\": \"bool\",\n     
+    \"value\": false\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
+    \"a5ef567e-1cd9-4fdf-a072-621957a4e175\"\n    },\n    \"rs\": {\n      \"key\":
+    \"DebugConsole\",\n      \"type\": \"bool\",\n      \"value\": false\n    }\n 
+    }\n]"
+  _environments: "[\n  {\n    \"projectId\": \"fec7df0d-cd1d-4c44-aff4-206b220cb57e\",\n   
+    \"name\": \"production\",\n    \"id\": \"1ef9fe7d-6c65-409f-8422-4a31e1eb9133\",\n   
+    \"isDefault\": true,\n    \"createdAt\": \"2025-03-12T19:14:07Z\",\n    \"updatedAt\":
+    \"2025-03-12T19:14:07Z\"\n  }\n]"
