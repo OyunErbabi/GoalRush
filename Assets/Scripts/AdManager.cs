@@ -1,16 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using GoogleMobileAds.Ump;
 using GoogleMobileAds.Ump.Api;
-using System;
-using System.Security.Cryptography;
-using System.Text;
 using GoogleMobileAds.Api;
 using Unity.Services.RemoteConfig;
-using Unity.Services.Authentication;
 using System.Threading.Tasks;
 using Unity.Services.Core;
+
 
 public class AdManager : MonoBehaviour
 {
@@ -82,9 +77,11 @@ public class AdManager : MonoBehaviour
     void StartAds()
     {
 
+        RequestATTConsent();
+
         TestAds = RemoteConfigService.Instance.appConfig.GetBool("TestAds");
 
-        Debug.Log("TestAds: " + TestAds);
+        //Debug.Log("TestAds: " + TestAds);
 
 
         if (TestAds)
@@ -298,6 +295,13 @@ public class AdManager : MonoBehaviour
             return;
         }
         LoadConsentForum();
+    }
+
+
+    void RequestATTConsent()
+    {
+        ConsentRequestParameters parameters = new ConsentRequestParameters();
+        ConsentInformation.Update(parameters, OnConsentInfoUpdated);
     }
 
 }
